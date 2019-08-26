@@ -15,7 +15,7 @@ RSpec.describe "As a user", type: :feature do
       visit "/"
 
       within (".navbar") do
-        fill_in "Zip", with: 80203
+        fill_in "q", with: 80203
         click_on "Locate"
       end
 

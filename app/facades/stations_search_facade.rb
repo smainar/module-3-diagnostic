@@ -4,6 +4,12 @@ class StationsSearchFacade
   end
 
   def stations
+    # Attempt to refactor:
+    service = NrelService.new
+    service.stations_by_zip(zip_code).map do |station_info|
+      Station.new(station_info)
+    end
+
     conn = Faraday.new(url: "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json") do |f|
       f.headers["X-Api-Key"] = ENV["NREL_API_KEY"]
       f.params["limit"] = 10
@@ -18,4 +24,7 @@ class StationsSearchFacade
       Station.new(station_info)
     end
   end
+
+  private
+    attr_reader :zip_code
 end

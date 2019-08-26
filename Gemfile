@@ -14,7 +14,11 @@ gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'pry'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -27,4 +31,3 @@ group :test do
   gem 'webmock'
   gem 'capybara'
 end
-
